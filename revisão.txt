@@ -1,0 +1,7 @@
+
+Facilitador:
+
+git init -y
+
+dps instala express, nodemon, pg, dotenv e knex
+
