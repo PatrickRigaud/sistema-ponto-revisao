@@ -1,5 +1,6 @@
 const data = require('../data/usuario-data')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 
 const cadastrarUsuario = async (req, res) => {
@@ -30,7 +31,9 @@ const login = async (req, res) => {
             return res.json({message: 'Senha Incorreta'})
         }
 
-        res.json({emailLocalizado})
+        const token = jwt.sign({id: emailLocalizado.id}, process.env.SENHA_HASH, {expiresIn: '7d'})
+
+        res.json({token})
   
 
     } catch (error) {
