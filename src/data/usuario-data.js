@@ -7,6 +7,14 @@ const cadastrarUsuario = async (cliente) => {
     .returning("*")
 }
 
+const verificarEmail = async (email) => {
+    return await knex('usuario')
+    .where('email', email)
+    .first()
+    
+}
+
 module.exports = {
-    cadastrarUsuario
+    cadastrarUsuario,
+    verificarEmail
 }

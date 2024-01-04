@@ -7,7 +7,7 @@ rotas.get('/', (req, res) => {
 })
 
 rotas.post('/usuario', usuario.cadastrarUsuario)
-
+rotas.post('/login', usuario.login)
 
 
 

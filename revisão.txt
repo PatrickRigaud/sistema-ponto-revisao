@@ -1,7 +1,26 @@
 
-Facilitador:
 
-git init -y
 
-dps instala express, nodemon, pg, dotenv e knex
+
+sistema de ponto
+
+
+-> Login
+-> Cadastrar usuario
+
+Autenticado
+-> Listar todos os usuarios cadastrados
+-> Iniciar ponto
+-> Iniciar descanso
+-> Encerrar Descanso
+-> Encerrar ponto
+
+-> Historico por data
+
+-> Alterar ponto/dia
+
+-> Alterar dados cadastrais
+
+
+
 
