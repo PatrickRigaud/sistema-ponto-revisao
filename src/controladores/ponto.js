@@ -32,9 +32,9 @@ const iniciarPonto = async (req, res) => {
   
     try {
         const buscarPontoCadastradoDia = await dataPonto.buscarPontoCadastradoDia(id, dataFormatada)
-        console.log(buscarPontoCadastradoDia)
+      
         if(!buscarPontoCadastradoDia){
-            const pontoIniciado = await dataPonto.iniciarPonto(id, dataFormatada, horaFormatada)
+           await dataPonto.iniciarPonto(id, dataFormatada, horaFormatada)
         return res.status(200).json({message: 'Ponto iniciado'})
         }
         
