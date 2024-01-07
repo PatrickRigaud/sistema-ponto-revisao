@@ -22,7 +22,7 @@ const login = async (req, res) => {
 
     try {
         const emailLocalizado = await data.verificarEmail(email)
-        
+    
         if(!emailLocalizado) {
             return res.json({message: 'Dados Invalidos'})
         }
@@ -31,13 +31,13 @@ const login = async (req, res) => {
             return res.json({message: 'Senha Incorreta'})
         }
 
-        const token = jwt.sign({id: emailLocalizado.id}, process.env.SENHA_HASH, {expiresIn: '7d'})
+        const token = jwt.sign({id: emailLocalizado.id, nome: emailLocalizado.nome, email: emailLocalizado.email}, process.env.SENHA_HASH, {expiresIn: '7d'})
 
-        res.json({token})
+        return res.json({token})
   
 
     } catch (error) {
-        res.json({message: 'Erro é ' + error})
+        return res.json({message: 'Erro é ' + error})
     }
 }
 
