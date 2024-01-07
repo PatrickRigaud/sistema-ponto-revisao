@@ -26,13 +26,13 @@ const buscarHora = () => {
 
 
 const iniciarPonto = async (req, res) => {
-    const {id, email} = req.usuario
+    const {id} = req.usuario
     const dataFormatada = buscarData()
     const horaFormatada = buscarHora()
   
     try {
         const buscarPontoCadastradoDia = await dataPonto.buscarPontoCadastradoDia(id, dataFormatada)
-      
+      console.log(buscarPontoCadastradoDia)
         if(!buscarPontoCadastradoDia){
            await dataPonto.iniciarPonto(id, dataFormatada, horaFormatada)
         return res.status(200).json({message: 'Ponto iniciado'})
@@ -43,7 +43,73 @@ const iniciarPonto = async (req, res) => {
     } catch (error) {
         console.log(error)
     }
+}
 
+
+const iniciarIntervalo = async (req, res) => {
+    const {id} = req.usuario
+    const dataFormatada = buscarData()
+    const horaFormatada = buscarHora()
+
+    try {
+        const buscarPontoCadastradoDia = await dataPonto.buscarPontoCadastradoDia(id, dataFormatada)
+        
+        if(!buscarPontoCadastradoDia.inicio_intervalo){
+            await dataPonto.iniciarIntervalo(id, dataFormatada, horaFormatada)
+         return res.status(200).json({message: 'Intervalo iniciado'})
+         }
+
+         return res.json({message: 'Não é possivel iniciar o intervalo'})
+
+
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+const finalizarIntervalo = async (req, res) => {
+    const {id} = req.usuario
+    const dataFormatada = buscarData()
+    const horaFormatada = buscarHora()
+
+    try {
+        const buscarPontoCadastradoDia = await dataPonto.buscarPontoCadastradoDia(id, dataFormatada)
+        
+        if(!buscarPontoCadastradoDia.final_intervalo){
+            await dataPonto.finalizarIntervalo(id, dataFormatada, horaFormatada)
+         return res.status(200).json({message: 'Intervalo Encerrado'})
+         }
+
+         return res.json({message: 'Não é possivel encerrar o intervalo'})
+
+
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+const finalizarPonto = async (req, res) => {
+    const {id} = req.usuario
+    const dataFormatada = buscarData()
+    const horaFormatada = buscarHora()
+
+    try {
+        const buscarPontoCadastradoDia = await dataPonto.buscarPontoCadastradoDia(id, dataFormatada)
+        
+        if(!buscarPontoCadastradoDia.final_ponto){
+            await dataPonto.finalizarPonto(id, dataFormatada, horaFormatada)
+         return res.status(200).json({message: 'Ponto Encerrado'})
+         }
+
+         return res.json({message: 'Não é possivel encerrar o ponto'})
+
+
+    } catch (error) {
+        console.log(error)
+    }
 
 }
 
@@ -51,5 +117,8 @@ const iniciarPonto = async (req, res) => {
 
 
 module.exports = {
-    iniciarPonto
+    iniciarPonto,
+    iniciarIntervalo,
+    finalizarIntervalo,
+    finalizarPonto
 }

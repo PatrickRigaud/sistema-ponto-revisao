@@ -15,7 +15,10 @@ rotas.post('/usuario', validarDadosRequisicao(schema.schemaUsuario), usuario.cad
 rotas.post('/login', usuario.login)
 
 rotas.use(autenticador)
-rotas.get('/iniciop', ponto.iniciarPonto)
+rotas.post('/iniciop', ponto.iniciarPonto)
+rotas.post('/inicioi', ponto.iniciarIntervalo)
+rotas.post('/finali', ponto.finalizarIntervalo)
+rotas.post('/finalp', ponto.finalizarPonto)
 
 
 
