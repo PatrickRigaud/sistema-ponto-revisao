@@ -28,7 +28,7 @@ const autenticador = async (req, res, next) => {
         
 
         req.usuario = usuario
-            console.log(req.usuario)
+           
         next()
         
     } catch (error) {
